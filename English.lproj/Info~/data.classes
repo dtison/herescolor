@@ -1,0 +1,46 @@
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+Controller = {
+    ACTIONS = {
+	appWillTerminate:;
+	print:;
+	open:;
+	setPrinterMagenta:;
+	setPrinterYellow:;
+	testMeter:;
+	saveAs:;
+	setPrinterCyan:;
+	setPrinterBlue:;
+	makeCircuit:;
+	zoomout:;
+	setWindowBackgroundColor:;
+	window:;
+	zoomin:;
+	showInfo:;
+	calibrate:;
+	preferences:;
+	setPrinterGreen:;
+	setPrinterRed:;
+    };
+    OUTLETS = {
+	olInfoPanel;
+	olProgressPanel;
+	olCalibratePanel;
+	olPrinterYellow;
+	olPrinterMagenta;
+	olFunnyButton;
+	olPrinterBlue;
+	olProgressMeter;
+	idPrometer;
+	olSignonPanel;
+	olPrinterCyan;
+	olPrinterGreen;
+	olPrinterRed;
+	olPreferencesPanel;
+	olPreferencesColorWell;
+    };
+    SUPERCLASS = Object;
+};

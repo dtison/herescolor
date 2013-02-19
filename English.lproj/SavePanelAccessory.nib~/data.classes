@@ -1,0 +1,67 @@
+ChangeManager = {
+    ACTIONS = {
+	enableChanges:;
+	undoOrRedoChange:;
+	clean:;
+	undoChange:;
+	redoChange:;
+	dirty:;
+	disableChanges:;
+	reset:;
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = Responder;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+ImageDocument = {
+    ACTIONS = {
+	saveAs:;
+	lzwCompressionSet:;
+	jpegCompressionSet:;
+	noCompressionSet:;
+    };
+    OUTLETS = {
+	idMarquisView;
+	olSavePanelAccessoryView;
+	idWindow;
+	idMiniImage;
+	olJpegLevelEdit;
+	olJpegLevelSlider;
+	idImageView;
+	idImage;
+    };
+    SUPERCLASS = ChangeManager;
+};
+Controller = {
+    ACTIONS = {
+	setOpenProfiles:;
+	lzwCompressionSet:;
+	setOpenImages:;
+	jpegCompressionSet:;
+	noCompressionSet:;
+    };
+    OUTLETS = {
+	olInputProfilesPanel;
+	olInfoVersion;
+	olInfoPanel;
+	olSelectInputProfile;
+	idOutputProfileInspector;
+	olSavePanelAccessoryView;
+	olJpegLevelEdit;
+	idPrometer;
+	olColorPanelAccessoryView;
+	idScannerCalibrator;
+	olInputProfilesBrowser;
+	olJpegLevelSlider;
+	idMonitorCalibrator;
+	olOpenPanelAccessoryView;
+	olPreferencesPanel;
+	olInputProfilesProgress;
+    };
+    SUPERCLASS = Object;
+};

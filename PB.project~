@@ -1,0 +1,34 @@
+INSTALLDIR = "$(HOME)/Apps";
+FILESTABLE = {
+    C_FILES = (CmsLibStub.c, Errors.c);
+    OTHER_LIBS = (dbkit_s, Media_s, NeXT_s);
+    PSW_FILES = (HEREpsw.psw);
+    CLASSES = (Change.m, ChangeManager.m, ColorLinks.m, Controller.m, Curve.m, GammaView.m, ImageDocument.m, ImageScrollView.m, ImageView.m, MonitorCalibrator.m, MyDBImageView.m, OPISupport.m, OutputProfileInspector.m, PatternView.m, PrinterChipsView.m, ScannerCalibrator.m, Slidey.m, Spin.m);
+    OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble);
+    INTERFACES = (Changes.nib, HeresColor.nib, Info.nib, InputProfile.nib, MonitorCalibrator.nib, OpenPanelAccessory.nib, OutputProfInsp.nib, PrintPanelAccessory.nib, Registration.nib, SavePanelAccessory.nib, ScannerCalibratorWithTransparency.nib);
+    H_FILES = (Change.h, ChangeManager.h, ColorLinks.h, Controller.h, Curve.h, GammaView.h, HEREpsw.h, ImageDocument.h, ImageScrollView.h, ImageView.h, MonitorCalibrator.h, MyDBImageView.h, OPISupport.h, OutputProfileInspector.h, PatternView.h, PrinterChipsView.h, Registration.h, ScannerCalibrator.h, Slidey.h, Spin.h);
+    OTHER_LINKED = ();
+    M_FILES = (HeresColor_main.m, ProgressView.m, Registration.m, HEREutils.m, InkmodelCheck.m);
+};
+GENERATEMAIN = YES;
+DOCICONFILES = ();
+DOCEXTENSIONS = ();
+MAINNIB = HeresColor;
+PROJECTTYPE = Application;
+PROJECTVERSION = 1.1;
+LOCALIZABLE_FILES = {
+    Info.nib;
+    SavePanelAccessory.nib;
+    HeresColor.nib;
+    InputProfile.nib;
+    Registration.nib;
+    PrintPanelAccessory.nib;
+    Changes.nib;
+    MonitorCalibrator.nib;
+    OpenPanelAccessory.nib;
+    ScannerCalibratorWithTransparency.nib;
+    OutputProfInsp.nib;
+};
+PROJECTNAME = HeresColor;
+SYSTEMEXTENSIONS = ();
+LANGUAGE = English;

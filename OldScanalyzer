@@ -1,0 +1,197 @@
+/*  This cutesy little bugger takes the tiff image of our test target and tries to find the average
+     color per square on it.  Pitfalls along the way: 1)  Upside down scan.  2)  Scanned at an 
+     angle.  3)  Not cropped right; portions of image cut away.  4)  Scanned a photograph of
+     Grandma in the flower garden.  You name it!  */
+
+// TODO:  Convert to mesh or planar operation
+
+int scanalyze (NXBitmapImageRep *bitmapImage, ColorV* grayRamp, ColorV* mainColors)
+{
+	int	Return = 0;		//  Assume ok return
+	int	scanWidth, scanHeight;
+	int	bytesPerPixel;
+	int	bytesPerRow;
+	int	grayBytesPerPixel;
+	int	grayBytesPerRow;
+	int	blackXOffset, blackYOffset;
+	int	boxWidth;
+	int	i, j, k;
+	NXBitmapImageRep		*grayImage;
+
+	PBYTE	imageData, dataPtr;
+	PBYTE	grayData, grayPtr;
+
+	ColorV	colorV, targetV;
+	BOOL	done, match;
+
+	bytesPerPixel 			= [bitmapImage hasAlpha] ? 4: 3;
+	bytesPerRow 			= [bitmapImage bytesPerRow];
+	scanWidth 			= [bitmapImage pixelsWide];
+	scanHeight 			= [bitmapImage pixelsHigh];
+	
+	if (scanWidth < 50 || scanHeight < 50)
+		return 1;		//	error handling  1 = image size error
+
+	/*  First create a grayscale bitmap, then convert to edges only  */
+
+	grayImage = [[NXBitmapImageRep alloc] initData: NULL 
+				pixelsWide: scanWidth 
+				pixelsHigh: scanHeight 
+				bitsPerSample: 8 
+				samplesPerPixel: 1 
+				hasAlpha: NO 
+				isPlanar: NO 
+				colorSpace: NX_OneIsWhiteColorSpace 
+				bytesPerRow: scanWidth
+				bitsPerPixel: 8];
+
+	grayBytesPerRow 	= scanWidth;
+	grayBytesPerPixel 	= 1;
+
+
+	imageData	= [bitmapImage data];
+	grayPtr 		= [grayImage data];
+
+	for (i = 0; i < scanHeight; i++)
+	{
+		dataPtr = imageData;
+		for (j = 0; j < scanWidth; j++)
+		{			
+ 			*grayPtr++ = (dataPtr [0] + dataPtr [1] + dataPtr [2]) / 3;
+			dataPtr += bytesPerPixel;
+		}
+		imageData += bytesPerRow;
+	}	
+
+	medianFilter ([grayImage data], scanWidth, scanHeight, 1);
+	findEdges ([grayImage data], scanWidth, scanHeight, 1);
+	
+	// Temporary see-it on screen
+
+ 	globalID = grayImage;
+
+ //	#if 0
+	{
+		NXStream *stream;
+
+		stream = NXOpenMemory (0, NULL, NX_READWRITE);
+		[grayImage  writeTIFF: stream];
+		NXSaveToFile (stream, "/me/gray.tiff");
+		NXClose (stream);
+	}
+ //	#endif
+
+	/*  Now scanalyze the grayscale image  */
+
+	#if 0
+	/*  Start in upper left.  We need to see at least 1 row of  whites  */
+
+	grayPtr 	= [grayImage data];
+	for (i = 0; i < scanWidth; i++)
+	{
+		if (grayPtr [i] != 255)
+			return 2;		//	error handling  2 = crop or rotation error
+		grayPtr += grayBytesPerPixel;
+	}	
+	#endif
+	
+	/*  Now we assume we have at least 1 white scanline up there.  So, now go looking for the
+	     first black line  */
+
+	done	 	= NO;
+	match	= NO;
+	grayData 	= [grayImage data];
+
+	for (i = 0; i < (scanHeight >> 1) && (! done); i++)
+	{
+		grayPtr = grayData;
+		for (j = 0; j < (scanWidth >> 1) && (! done); j++)
+		{
+			if (! grayPtr [j])		// Found a black pixel, make sure it's a line
+			{
+				match = YES;
+				for (k = j; (k < j + 25 && match); k++)
+					if (grayPtr [k])
+						match = NO;
+			}
+			
+			if (match)
+			{
+				blackXOffset = j;
+				blackYOffset = i;
+				done = YES;
+ 			}
+
+			grayPtr += grayBytesPerPixel;
+		}
+		grayData += grayBytesPerRow;
+	}	
+
+	if (! done)
+		return 3;		//	error handling  3 = not our image,anything else?
+
+	
+
+
+	/*  Now we go down looking for blue (next horizontal line)  */
+
+	done	 		= NO;
+	match	= NO;
+	grayData 		= [grayImage data];
+	grayData 		+= ((blackYOffset + 10) * grayBytesPerRow);
+	grayData		+= (blackXOffset * grayBytesPerPixel);
+
+	for (j = blackYOffset + 10; j < (scanHeight >> 1) && (! done); j++)
+	{
+		if (! grayPtr [j])		// Found a black, now make sure it's a line
+		{
+			match = YES;
+			for (k = j; (k < j + 25 && match); k++)
+				if (grayPtr [k])
+					match = NO;
+			}
+			
+			if (match)
+			{
+				boxWidth = j - blackYOffset;
+				done = YES;
+ 			}
+		
+
+		grayData += grayBytesPerRow;
+	}	
+
+	if (! done)
+		return 3;		//	error handling  3 = not our image,anything else?
+
+	
+	/*   Check a little for consistency  */
+
+	if ((blackXOffset + (boxWidth * 12)) > scanWidth)
+		return 4;		//	error handling  3 or 2
+
+	if ((blackYOffset + (boxWidth * 19)) > scanHeight)
+		return 4;		//	error handling  3 or 2
+
+
+
+	/*  Ok here goes.  Superimpose a 12 X 19 grid and subsample colors  */
+
+	imageData 	= [bitmapImage data];
+	imageData 	+= (blackYOffset * bytesPerRow);
+	imageData 	+= (((boxWidth >> 1) - 4) * bytesPerRow);
+	imageData	+= (blackXOffset * bytesPerPixel);
+	imageData 	+= (((boxWidth >> 1) - 4) * bytesPerPixel);
+
+	dataPtr = imageData;
+
+	for (i = 0; i < 12; i++)
+	{
+		subSample (colorV, dataPtr, bytesPerRow, bytesPerPixel);
+		memcpy (grayRamp [i], colorV, sizeof (ColorV));
+		dataPtr += boxWidth * bytesPerPixel;
+	}	
+
+	return Return;
+}
+

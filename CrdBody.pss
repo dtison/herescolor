@@ -1,0 +1,112 @@
+{pop 0} setblackgeneration
+{pop 0} setundercolorremoval
+
+%  Get rid of any transfer functions
+
+{1 exch sub} dup dup dup setcolortransfer
+{} settransfer
+
+
+% Start of a rendering dict
+<<
+
+/ColorRenderingType
+1
+
+
+
+/MatrixLMN
+[
+3.2410
+-0.9692
+0.0556
+-1.5374
+1.8760
+-0.2040
+-0.4986
+0.0416
+1.0570
+]
+
+/EncodeLMN
+[
+{
+dup -0.018 le
+	{
+	neg 0.45 exp -1.099 mul 0.099 add
+	}
+	{
+	dup 0.018 lt
+		{
+		4.5 mul
+		}
+		{
+		0.45 exp 1.099 mul 0.099 sub
+		} ifelse
+	} ifelse
+} bind
+dup
+dup
+]
+
+/RangeLMN
+[
+-0.375
+1.125
+-0.125
+1.0
+-0.25
+1.0
+]
+
+
+
+/MatrixABC
+[
+1.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+1.0
+]
+
+/EncodeABC
+[
+{} bind
+{} bind
+{} bind
+]
+
+/RangeABC
+[
+-0.375
+1.125
+-0.125
+1.0
+-0.25
+1.0
+]
+
+/WhitePoint
+[
+0.9505
+1.0
+1.0890
+]
+
+/BlackPoint
+[
+0.0
+0.0
+0.0
+]
+
+
+
+
+/TransformPQR [{4 {exch pop} repeat} bind dup dup]
+

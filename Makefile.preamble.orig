@@ -1,0 +1,2 @@
+OTHER_LIBS=/LocalLibrary/CmsLib/CmsLib.a #/usr/lib/libMallocDebug.a
+OTHER_DEBUG_LIBS=/LocalLibrary/CmsLib/CmsLib.a

@@ -1,0 +1,140 @@
+%  This was ours...
+ 
+%  {
+/MatrixLMN
+[
+	2.95372 	
+	-1.08475 	
+	0.08553
+	-1.29037	
+	1.99020	
+	-0.26963
+	-0.47420	
+	0.03719	
+	1.09183
+]
+
+
+/EncodeLMN
+[{dup 0.0 ge {1 1.8 div exp} if} bind dup dup]
+
+ 
+
+/RangeLMN
+[
+-0.375
+1.125
+-0.125
+1.0
+-0.25
+1.0
+]
+% } pop
+
+
+% This was theirs.  Presumably these are already in the stream so they don't
+% need to be in our CRD
+
+ {
+/MatrixLMN
+[
+3.2410
+-0.9692
+0.0556
+-1.5374
+1.8760
+-0.2040
+-0.4986
+0.0416
+1.0570
+]
+
+/EncodeLMN
+[
+{
+dup -0.018 le
+	{
+	neg 0.45 exp -1.099 mul 0.099 add
+	}
+	{
+	dup 0.018 lt
+		{
+		4.5 mul
+		}
+		{
+		0.45 exp 1.099 mul 0.099 sub
+		} ifelse
+	} ifelse
+} bind
+dup
+dup
+]
+
+/RangeLMN
+[
+-0.375
+1.125
+-0.125
+1.0
+-0.25
+1.0
+]
+
+ } pop
+
+
+/MatrixABC
+[
+1.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+1.0
+]
+
+/EncodeABC
+[
+{} bind
+{} bind
+{} bind
+]
+
+/RangeABC
+[
+-0.375
+1.125
+-0.125
+1.0
+-0.25
+1.0
+]
+
+/WhitePoint
+[
+0.9505
+1.0
+1.0890
+]
+
+/BlackPoint
+[
+0.0
+0.0
+0.0
+]
+
+{
+/RangePQR
+[
+-0.125
+1.375
+-0.125
+1.375
+-0.125
+1.375
+]  } pop
+

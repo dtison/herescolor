@@ -1,0 +1,80 @@
+
+defineps PSWsetgamma (float gamma)
+{1 gamma div exp}  dup dup dup 0 setframebuffertransfer
+endps
+
+
+defineps PSWsetredgamma (float gamma)
+{1 gamma div exp}
+0 currentframebuffertransfer
+4 -1 roll pop
+0 setframebuffertransfer
+endps
+
+defineps PSWsetgreengamma (float gamma)
+0 currentframebuffertransfer
+4 2 roll
+pop				%  Remove green
+{1 gamma div exp}	%  Replace w/new green
+4 -2 roll 
+0 setframebuffertransfer
+endps
+
+defineps PSWsetbluegamma (float gamma)
+0 currentframebuffertransfer
+4 1 roll
+pop				%  Remove blue
+{1 gamma div exp}	%  Replace w/new blue
+4 -1 roll 
+0 setframebuffertransfer
+endps
+
+defineps PSarrow (float x, y)
+	x y 
+
+	newpath
+	moveto
+	
+	-6   0 rlineto
+	6  6 rlineto
+	6 -6  rlineto
+	
+	closepath
+	fill 
+    	
+endps
+
+defineps PSWdrawbox (float c, m, y, k, boxsize)
+	0 0 moveto
+	c m y k setcmykcolor
+	boxsize 0 rlineto
+	0 boxsize rlineto
+	boxsize neg 0 rlineto
+	closepath
+	fill
+endps
+
+defineps PSWdrawboxrgb (float r, g, b, boxsize)
+	0 0 moveto
+	/DeviceRGB setcolorspace r g b setcolor
+	boxsize 0 rlineto
+	0 boxsize rlineto
+	boxsize neg 0 rlineto
+	closepath
+	fill
+endps
+
+
+defineps PSWsetfont (char *name; float size)
+/Helvetica findfont size scalefont setfont
+endps
+
+defineps PSWremoveblackgen ()
+	{pop 0} setblackgeneration
+	{pop 0} setundercolorremoval
+	{} dup dup dup setcolortransfer
+	{} settransfer
+endps
+
+
+

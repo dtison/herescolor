@@ -1,0 +1,54 @@
+echo ColorLinks.m:
+diff ColorLinks.m ../HeresCRD/ColorLinks.m
+
+echo Curve.m:
+diff Curve.m ../HeresCRD/Curve.m
+diff Curve.h ../HeresCRD/Curve.h
+
+echo GammaView.m:
+diff GammaView.m ../HeresCRD/GammaView.m
+diff GammaView.h ../HeresCRD/GammaView.h
+
+echo InkmodelCheck.m:
+diff InkmodelCheck.m ../HeresCRD/InkmodelCheck.m
+
+echo MonitorCalibrator.m:
+diff MonitorCalibrator.m ../HeresCRD/MonitorCalibrator.m
+diff MonitorCalibrator.h ../HeresCRD/MonitorCalibrator.h
+
+echo MyDBImageView.m:
+diff MyDBImageView.m ../HeresCRD/MyDBImageView.m
+diff MyDBImageView.h ../HeresCRD/MyDBImageView.h
+
+echo OPISupport.m:
+diff OPISupport.m ../HeresCRD/OPISupport.m
+diff OPISupport.h ../HeresCRD/OPISupport.h
+
+echo OutputProfileInspector.m:
+diff OutputProfileInspector.m ../HeresCRD/OutputProfileInspector.m
+diff OutputProfileInspector.h ../HeresCRD/OutputProfileInspector.h
+
+echo PatternView.m:
+diff PatternView.m ../HeresCRD/PatternView.m
+diff PatternView.h ../HeresCRD/PatternView.h
+
+echo PrinterChipsView.m:
+diff PrinterChipsView.m ../HeresCRD/PrinterChipsView.m
+diff PrinterChipsView.h ../HeresCRD/PrinterChipsView.h
+
+echo Slidey.m:
+diff Slidey.m ../HeresCRD/Slidey.m
+diff Slidey.h ../HeresCRD/Slidey.h
+
+echo Spin.m:
+diff Spin.m ../HeresCRD/Spin.m
+diff Spin.h ../HeresCRD/Spin.h
+
+echo HEREutils.m:
+diff HEREutils.m ../HeresCRD/HEREutils.m
+
+echo ProgressView.m:
+diff ProgressView.m ../HeresCRD/ProgressView.m
+
+echo Errors.c:
+diff Errors.c ../HeresCRD/Errors.c

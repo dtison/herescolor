@@ -1,0 +1,40 @@
+ProgressView = {
+    ACTIONS = {
+	increment:;
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = View;
+};
+FirstResponder = {
+    ACTIONS = {
+	cancel:;
+	ok:;
+    };
+    SUPERCLASS = Object;
+};
+Controller = {
+    ACTIONS = {
+	setOpenImages:;
+	setOpenProfiles:;
+	showPrometer:;
+    };
+    OUTLETS = {
+	olInputProfilesPanel;
+	olInfoVersion;
+	olInfoPanel;
+	olInputProfilesStatus;
+	idOutputProfileInspector;
+	olSelectInputProfile;
+	olSavePanelAccessoryView;
+	idPrometer;
+	olColorPanelAccessoryView;
+	idScannerCalibrator;
+	olInputProfilesBrowser;
+	idMonitorCalibrator;
+	olOpenPanelAccessoryView;
+	olPreferencesPanel;
+	olInputProfilesProgress;
+    };
+    SUPERCLASS = Object;
+};

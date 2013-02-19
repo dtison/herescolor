@@ -1,0 +1,27 @@
+Negative = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	idDocument;
+    };
+    SUPERCLASS = Change;
+};
+Mirror = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	idDocument;
+	olSetupPanel;
+    };
+    SUPERCLASS = Change;
+};
+FirstResponder = {
+    ACTIONS = {
+	cancel:;
+	ok:;
+    };
+    SUPERCLASS = Object;
+};
+Change = {
+    SUPERCLASS = Responder;
+};

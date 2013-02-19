@@ -1,0 +1,121 @@
+	/*  Now move thru that to find edges we're interested in  */
+
+	/*  Start in upper left.  We need to see at least 1 row of near whites  */
+
+	targetV [0] = 
+	targetV [1] = 
+	targetV [2] = 1.0;
+
+	dataPtr = [bitmapImage data];
+	for (i = 0; i < scanWidth; i++)
+	{
+		colorV [0] =  ((float) dataPtr[0] / 255);
+		colorV [1] =  ((float) dataPtr[1] / 255);
+		colorV [2] =  ((float) dataPtr[2] / 255);
+
+		if (colorDistance (colorV, targetV) > 1.0)	       
+			return 2;		//	error handling  2 = crop or rotation error
+		
+		dataPtr += bytesPerPixel;
+	}	
+
+	/*  Now we assume we have at least 1 white scanline up there.  So, now go looking for the
+	     black chip  */
+
+	targetV [0] 	= 
+	targetV [1] 	= 
+	targetV [2] 	= 0.0;
+	done	 		= NO;
+	imageData 	= [bitmapImage data];
+
+	for (i = 0; i < (scanHeight >> 1) && (! done); i++)
+	{
+		dataPtr = imageData;
+		for (j = 0; j < (scanWidth >> 1) && (! done); j++)
+		{
+			colorV [0] =  ((float) dataPtr[0] / 255);
+			colorV [1] =  ((float) dataPtr[1] / 255);
+			colorV [2] =  ((float) dataPtr[2] / 255);
+
+			if (colorDistance (colorV, targetV) < 0.5)     
+			{
+				blackXOffset = j;
+				blackYOffset = i;
+				done = YES;
+ 			}
+
+			dataPtr += bytesPerPixel;
+		}
+		imageData += bytesPerRow;
+	}	
+
+	if (! done)
+		return 3;		//	error handling  3 = not our image,anything else?
+
+	
+
+
+	/*  Now we go down looking for blue   */
+
+	/*  May want to compare first against black, then look for blue content  */
+
+	/*  (targetV still contains black)  */
+
+	done	 		= NO;
+	imageData 	= [bitmapImage data];
+	imageData 	+= (blackYOffset * bytesPerRow);
+	imageData	+= (blackXOffset * bytesPerPixel);
+
+	for (i = blackYOffset; i < (scanHeight >> 1) && (! done); i++)
+	{
+		dataPtr = imageData;
+		for (j = blackXOffset; j < (scanWidth >> 1) && (! done); j++)
+		{
+			colorV [0] =  ((float) dataPtr[0] / 255);
+			colorV [1] =  ((float) dataPtr[1] / 255);
+			colorV [2] =  ((float) dataPtr[2] / 255);
+
+			if (colorDistance (colorV, targetV) > .5)     
+			{
+				boxWidth = i - blackYOffset;
+				done = YES;
+ 			}
+
+			dataPtr += bytesPerPixel;
+		}
+		imageData += bytesPerRow;
+	}	
+
+	if (! done)
+		return 3;		//	error handling  3 = not our image,anything else?
+
+	
+	/*   Check a little for consistency  */
+
+	if ((blackXOffset + (boxWidth * 12)) > scanWidth)
+		return 4;		//	error handling  3 or 2
+
+	if ((blackYOffset + (boxWidth * 19)) > scanHeight)
+		return 4;		//	error handling  3 or 2
+
+
+
+	/*  Ok here goes.  Superimpose a 12 X 19 grid and subsample colors  */
+
+	imageData 	= [bitmapImage data];
+	imageData 	+= (blackYOffset * bytesPerRow);
+	imageData 	+= (((boxWidth >> 1) - 4) * bytesPerRow);
+	imageData	+= (blackXOffset * bytesPerPixel);
+	imageData 	+= (((boxWidth >> 1) - 4) * bytesPerPixel);
+
+	dataPtr = imageData;
+
+	for (i = 0; i < 12; i++)
+	{
+		subSample (colorV, dataPtr, bytesPerRow, bytesPerPixel);
+		memcpy (grayRamp [i], colorV, sizeof (ColorV));
+		dataPtr += boxWidth * bytesPerPixel;
+	}	
+
+
+

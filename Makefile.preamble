@@ -1,0 +1,9 @@
+OTHER_LIBS=/LocalLibrary/HERELibrary/CmsLib/CmsLib.Motorola.a /LocalLibrary/HERELibrary/CmsLib/CmsLib.Intel.a 
+OTHER_DEBUG_LIBS=/LocalLibrary/HERELibrary/CmsLib/CmsLib.Motorola.a /usr/lib/libMallocDebug.a
+
+
+#OTHER_DEBUG_LIBS=/LocalLibrary/CmsLib.Motorola.a  
+
+
+#
+

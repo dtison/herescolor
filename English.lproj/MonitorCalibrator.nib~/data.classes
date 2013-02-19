@@ -1,0 +1,76 @@
+Spin = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olControl1;
+	myStoredCellClass;
+	olControl2;
+    };
+    SUPERCLASS = Control;
+};
+FirstResponder = {
+    ACTIONS = {
+	setDefaults:;
+	redGammaSet:;
+	blueGammaSet:;
+	greenGammaSet:;
+    };
+    SUPERCLASS = Object;
+};
+MonitorCalibrator = {
+    ACTIONS = {
+	redGammaSet:;
+	setGammaView:;
+	runOrderFront:;
+	blueGammaSet:;
+	setNormalizerView:;
+	epsilonSet:;
+	setSettingsView:;
+	greenGammaSet:;
+	monitorCalibratorSet:;
+    };
+    OUTLETS = {
+	olGreenGammaSlider;
+	olRedGammaText;
+	olMonitorCalibratorView;
+	olMonPrimariesRedY;
+	olMonitorBrowser;
+	olBlueGammaSlider;
+	olMonPrimariesRedX;
+	olRedGammaView1;
+	olNormalizerView;
+	olRedGammaView2;
+	olGammaView;
+	olSettingsView;
+	olMonitorWhitepoint;
+	olBlueGammaView1;
+	olRedGammaSlider;
+	olInstructionsText;
+	olBlueGammaView2;
+	olGreenGammaText;
+	olMonPrimariesBlueX;
+	olViewPopup;
+	olMonPrimariesBlueY;
+	controller;
+	olEpsilonEdit;
+	olMonPrimariesGreenY;
+	olMonPrimariesGreenX;
+	olMonitorCalibratorPanel;
+	olGreenGammaView1;
+	olViewButton;
+	olBlueGammaText;
+	olGreenGammaView2;
+	olEpsilonSlider;
+    };
+    SUPERCLASS = Responder;
+};
+GammaView = {
+    ACTIONS = {
+	setGamma:;
+    };
+    OUTLETS = {
+	olText;
+	drawBitmapImage;
+    };
+    SUPERCLASS = Control;
+};

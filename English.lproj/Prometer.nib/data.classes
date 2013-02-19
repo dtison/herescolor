@@ -1,0 +1,17 @@
+Prometer = {
+    ACTIONS = {
+	setAbandon:;
+    };
+    OUTLETS = {
+	idPrometer;
+	olProgressBox;
+	olProgressMeter;
+	olProgressPanel;
+    };
+    SUPERCLASS = Object;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};

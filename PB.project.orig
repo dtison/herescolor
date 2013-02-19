@@ -1,0 +1,38 @@
+INSTALLDIR = "$(HOME)/Apps";
+APPICON = IconMan.tiff;
+GENERATEMAIN = YES;
+DOCICONFILES = (Profile.tiff);
+FILESTABLE = {
+    C_FILES = (CmsLibStub.c, Errors.c);
+    OTHER_LIBS = (dbkit_s, Media_s, NeXT_s, ni_s);
+    PSW_FILES = (HEREpsw.psw);
+    CLASSES = (Change.m, ChangeManager.m, ColorLinks.m, Controller.m, Curve.m, GammaView.m, ImageDocument.m, ImageScrollView.m, ImageView.m, MonitorCalibrator.m, MyDBImageView.m, OPISupport.m, OutputProfileInspector.m, PatternView.m, PrinterChipsView.m, ScannerCalibrator.m, Slidey.m, Spin.m);
+    OTHER_RESOURCES = ();
+    OTHER_SOURCES = (Makefile);
+    H_FILES = (Change.h, ChangeManager.h, ColorLinks.h, Controller.h, Curve.h, GammaView.h, HEREpsw.h, ImageDocument.h, ImageScrollView.h, ImageView.h, MonitorCalibrator.h, MyDBImageView.h, OPISupport.h, OutputProfileInspector.h, PatternView.h, PrinterChipsView.h, Registration.h, ScannerCalibrator.h, Slidey.h, Spin.h, Windefs.h, AppDefs.h);
+    INTERFACES = (HeresColor.nib, Info.nib, InputProfile.nib, MonitorCalibrator.nib, OpenPanelAccessory.nib, OutputProfInsp.nib, Preferences.nib, PrintPanelAccessory.nib, Registration.nib, SavePanelAccessory.nib, ScannerCalibrator.nib);
+    IMAGES = (Colorsep.eps, HERE.tiff, HERELogo.eps);
+    OTHER_LINKED = ();
+    M_FILES = (ByteOrder.m, HeresColor_main.m, HEREutils.m, Registration.m, ProgressView.m, InkmodelCheck.m);
+};
+APPCLASS = Application;
+MAINNIB = HeresColor;
+DOCEXTENSIONS = (OutputProfile);
+PROJECTTYPE = Application;
+PROJECTVERSION = 1.1;
+LOCALIZABLE_FILES = {
+    Info.nib;
+    SavePanelAccessory.nib;
+    ScannerCalibrator.nib;
+    HeresColor.nib;
+    InputProfile.nib;
+    Registration.nib;
+    PrintPanelAccessory.nib;
+    MonitorCalibrator.nib;
+    OpenPanelAccessory.nib;
+    Preferences.nib;
+    OutputProfInsp.nib;
+};
+PROJECTNAME = HeresColor;
+SYSTEMEXTENSIONS = ();
+LANGUAGE = English;

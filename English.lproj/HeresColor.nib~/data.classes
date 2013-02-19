@@ -1,0 +1,88 @@
+OutputProfInspPanel = {
+    SUPERCLASS = Panel;
+};
+ImageView = {
+    SUPERCLASS = ScrollView;
+};
+TestView = {
+    ACTIONS = {
+	zoomoutSelf:;
+	zoominSelf:;
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = View;
+};
+FirstResponder = {
+    ACTIONS = {
+	showInfo:;
+	setEpsilon:;
+	setupPrinters:;
+	close:;
+	zoomIn:;
+	showLicensePanel:;
+	redoChange:;
+	undoChange:;
+	new:;
+	revertToSaved:;
+	setProcessingView:;
+	loadDensitiesTable:;
+	saveAll:;
+	save:;
+	uninstallCRD:;
+	open:;
+	setDensitiesView:;
+	zoomOut:;
+	test:;
+	setAttributesView:;
+	saveAs:;
+	setColorSepView:;
+	setVisualColorMatchView:;
+	runMonitorCalibrator:;
+	setApplicationView:;
+	loadOutputProfile:;
+	changeLayout:;
+	print:;
+	previewOutput:;
+    };
+    SUPERCLASS = Object;
+};
+ColorPanelAccessoryView = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olSubview;
+	olCIEMatrix;
+    };
+    SUPERCLASS = View;
+};
+Controller = {
+    ACTIONS = {
+	showPrometer:;
+	setOpenProfiles:;
+	setOpenImages:;
+    };
+    OUTLETS = {
+	olOpenPanelAccessoryView1;
+	olCalibratePanel;
+	olSavePanelAccessoryView;
+	olColorPanelAccessoryView;
+	olOpenPanelAccessoryView2;
+	idInputProfileInspector;
+	idMonitorCalibrator;
+	olPreferencesPanel;
+	idOutputProfileInspector;
+	idPrometer;
+	olInfoPanel;
+    };
+    SUPERCLASS = Object;
+};
+GammaView = {
+    ACTIONS = {
+	setGamma:;
+    };
+    OUTLETS = {
+	olText;
+    };
+    SUPERCLASS = View;
+};

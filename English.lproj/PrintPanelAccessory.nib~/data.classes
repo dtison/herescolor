@@ -1,0 +1,42 @@
+ChangeManager = {
+    ACTIONS = {
+	enableChanges:;
+	undoOrRedoChange:;
+	clean:;
+	undoChange:;
+	redoChange:;
+	dirty:;
+	disableChanges:;
+	reset:;
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = Responder;
+};
+ImageDocument = {
+    ACTIONS = {
+	saveAs:;
+	lzwCompressionSet:;
+	jpegCompressionSet:;
+	noCompressionSet:;
+    };
+    OUTLETS = {
+	olEnableLevel2Color;
+	idMarquisView;
+	olPrintPanelAccessoryView;
+	olSavePanelAccessoryView;
+	idWindow;
+	idMiniImage;
+	olJpegLevelEdit;
+	olJpegLevelSlider;
+	controller;
+	idImageView;
+	idImage;
+    };
+    SUPERCLASS = ChangeManager;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};

@@ -1,0 +1,33 @@
+MyDBImageView = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olOtherImage;
+    };
+    SUPERCLASS = DBImageView;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+ScannerCalibrator = {
+    ACTIONS = {
+	loadTestTarget:;
+	runOrderFront:;
+    };
+    OUTLETS = {
+	olScannerCalibratorPanel;
+	olInstructionsText;
+	controller;
+	olScannedImageView;
+    };
+    SUPERCLASS = Responder;
+};
+DBImageView = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = Control;
+};

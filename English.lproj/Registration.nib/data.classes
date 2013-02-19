@@ -1,0 +1,10 @@
+SBookController = {
+    SUPERCLASS = Object;
+};
+FirstResponder = {
+    ACTIONS = {
+	showRegistrationPanel:;
+	registerProgram:;
+    };
+    SUPERCLASS = Object;
+};

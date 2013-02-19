@@ -1,0 +1,4 @@
+@interface OutputProfileInspector (MainMethods)
+
+
+@end

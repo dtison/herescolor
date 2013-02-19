@@ -1,0 +1,26 @@
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+Controller = {
+    ACTIONS = {
+	showPrometer:;
+	setOpenProfiles:;
+	setOpenImages:;
+    };
+    OUTLETS = {
+	olSavePanelAccessoryView;
+	olOpenPanelAccessoryView1;
+	olInfoVersion;
+	olColorPanelAccessoryView;
+	olOpenPanelAccessoryView2;
+	idScannerCalibrator;
+	idMonitorCalibrator;
+	olPreferencesPanel;
+	idOutputProfileInspector;
+	idPrometer;
+	olInfoPanel;
+    };
+    SUPERCLASS = Object;
+};

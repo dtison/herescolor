@@ -1,0 +1,120 @@
+{\rtf0\ansi{\fonttbl\f0\fswiss Helvetica;\f2\fnil Bookman-Light;}
+\paperw14640
+\paperh10200
+\margl120
+\margr120
+\pard\tx700\tx1420\tx2140\tx2860\tx3580\tx4300\tx5000\tx5720\tx6440\tx7160\f0\b0\i0\ulnone\fs24\fc0\cf0 \
+
+\b\ul Notes to talk to Bill about between 12/28/92 and 1/5/92.\
+
+\b0\ulnone \
+
+\b\i The next three month horizon: Jan 1 thru Mar 31\
+
+\b0\i0 \
+1)  We need to get our app plan / spec finalized 
+\i very
+\i0  soon, if we want to have a debugged program done by April 30.  Needless to say, there are more things we have talked about than can be identified, comprehended, designed, implemented, tested and debugged (by me, with a little help from my friends)  in the next three months.\
+\
+2)   Also, I have had this nagging feeling (thought) about what I will call the application's Candela-technology-to-HERE-contribution ratio.  What this means is that under our present arrangement, Candela's stuff should constitute at a 
+\ul minimum
+\ulnone  20%, (preferably a 
+\b\i higher
+\b0\i0  percentage)
+\b\i  
+\b0\i0 of our product, seeing that we are committed to giving away 20% of our sales right off the top.  I feel that if we implement all we have talked about in a product that also has the CCMS, the ratio could easily dip below 10%.  This would include the Photoshop / Vector editing stuff - plus plus.  On the other side,  in the case of a "nice" user interface wrapper for  the CCMS, the ratio is about 80-90%.  \
+\
+Bottom line, I am most comfortable with keeping the ratio (comfortably?) above 50%, especially for a first release.  That way our up-front investment (read risk) is minimized and we instead tend toward capitalizing on Bruce's diligent efforts before us.  \
+You should not look upon this type of thinking as "reining-in" of Bones, but of that  as an organizing force.  We should, I think, have a coherent post-1.0 release plan, and a lot of ideas that have come up lately will likely fall into that category, rather than trying to stuff the world into a first attempt, and thereby never hitting the mark.  Also, the post-1.0 time can allow us to renegotiate with the Twins for a less future-loaded agreement, maybe 3-5-7% license or something, or (ambitious) a one-time fee.\
+\
+3)  That Tone map stuff took Mize weeks to finish.  Three weeks, as I recall for the first version.  Worse, even if I implemented exactly as in Clabpro, I think it's inappropriate for our high end app.   Examples:\
+\
+a.  Gamma setting?  This is stupid and doesn't belong in there.  If we want to give the user the ability to do this kind of thing to images, let's call it a "power curve" or something, 
+\ul not
+\ulnone  gamma.   It applies to displays only and reflects ignorance on the programmer's part.  I believe Bruce (& John) would concur with this.  \
+\
+b.  The CMYK interface is still lacking on this tool.  Separators (and production people?) like strict divisions for highlight / midtones / shadows and, as I understand, do not like the Mize-inspired melding in of RGB-color-model interface / data on the screen which is confusing and has no meaning or relevance to them.  Further, the CMYK simulation doesn't mean 
+\i anything
+\i0  until it is referenced to a device, as in the CCMS.\
+\
+c.  While I think there is too much going on in that dialog box, there may be some ques for generalizing some Cache-type processes with a similar interface.\
+\
+d.  I should probably mention my ClabPro copy is dated 29 May 1992, a fairly complete one respecting the time we left that place.\
+\
+\
+4)  Just a quick look at the schedule and some things we've talked about lately:\
+\
+      	Implement CCMS 			4 weeks  (a month)\
+	ImagePrep (Clabpro) tools 	2 weeks  (Includes image processing "standards")\
+	Tone map system			1 week    (Possibly more if we fix problems with D. Mize version)\
+	Color Editing Tool			1 week   (If we want to really nail it, making it better that Cache's silly thing)\
+	Lasso/Wand etc. marquis		1 week   (Possibly more if I run into UI troubles, a distinct possibility)\
+	Save/Load scripts			2 weeks   ***\
+	Save/Load masks			1 week\
+	Color Rendering Dictionaries	Mostly unknown (1 week? 3-4 weeks?)\
+						-------------------------------------------------------\
+						13 weeks 	Puts us at April 7, assuming 1 week Rendering Dictionary total effort.\
+\
+	Color Separation Interface	1 week   	Puts us at April 14.\
+	Page-layout print Interface	1 week	Puts us at April  21\
+	Cleanup/error handling		1 week	Puts us at April  28.\
+\
+\
+	***Note that these are simple open/save panel based operations.  No provision is made in these times for icons or scrolling \
+	views or anything, or for editing & saving  them once created. \
+\
+	Note that we haven't accounted for any more file formats, like Scitex CT, back-transform handling, nor have we accounted \
+	for special modifications I have proposed for Tiff files because of the DPI tag problems with them.  (This requires a separate \
+	distinct, Tiff reader to pre-process image files to change the embedded DPI to 72 DPI.)  How about a CCMS-aware color \
+	picker that accounts for selected devices?  How about rasterizing EPS files to apply image processing to them?\
+	There are other odds and ends not  listed above that will take time.\
+\
+	Something to ponder.\
+\
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \
+\
+After looking at these numbers I suddenly see what damage has been done by our not having the CCMS until sometime in the future.  As an aside about Candela, I decided to (while waiting for the CMS) take another peek at the separation library they sent us.  By a peek, I mean a debug-like peek at anything - entry points, variables, filenames whatever's embedded in that file.  What's in there is certainly interesting,  like CompandV and CompandS function names meaning he's companding Value and Saturation separately, maintaining Hue as the third (and most important) variable.  There was stuff about basis, guess and matrix allocate, blend and invert, and then there was circuit create, transform and (hmmmm) invert. (as in back transform perhaps)  So my curiosity led me to find that old paper published by Siggraph August 1989 written by... B. Lindbloom at Crosfield Dicomed.  And wouldn't you know almost everything proposed in that paper (as far as steps go) is referenced by name in the library above?  \
+In fact, I now understand more of that paper and the processes it describes than I have ever before, but unfortunately for us, I have little experience in the 
+\i how-to 
+\i0 nuts and bolts of implementation because I've never been paid to learn about these  things or been taught as Bruce has.  So what follows for me is a mixed emotional bag.  Its almost cute how a thing described in the paper as "...tesselating the source RGB space into a large 3D array of points... combined with trilinear interpolation.. are approximately uniformly distributed in a perceptual sense... and can be re-created at any time from a small set of  device characterization information." is my 99% vote for the dead-nuts description of a Color Circuit.  That paper being out there probably spooks the Twins at times, I'd say.   John Grimaldi is even mentioned in the thanks-to who's who  list at the end of the paper!  Conclusion:\
+ If I had the number-science experience that Bruce has, I could be writing our own color circuits and transforms.  Is this why  Bruce won't hardly tell me anything?\
+\
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \
+\
+There is a final thing I need to say.  This business is strange. The ramp-time, up-front curve is long and incredibly steep (It should not be news, but I had hoped by selecting the right platform I would flatten the curve)  I suppose if we were in the Auto repair business,  service bureau or whatever,  we may not be paying (all) our bills, but at least by now we'd be doing 
+\i some
+\i0  business.   I have heard all the sayings about working 60-80 hours a week for $1.00 an hour.  But this business feels all the more ruthless than that because $80/week is infinitely more that $0.00/week.  If there were a Wizard-of-Oz type that I could consult that would say, "yep, it 
+\ul has
+\ulnone  to take as long, it 
+\ul has
+\ulnone  to be as hard, it 
+\ul has
+\ulnone  to be as risky and it 
+\ul has
+\ulnone  to be as stressful as it has been and has seemed", then I suppose I would look for another business to get in, and in the meantime go back to my prior ways of programming for salary (not for CPI).\
+\
+What I mean is that it has this all-or-nothing quality to it that is really beginning to wear on me.  Put differently,  I could fathom making a ("pitiful") $10-15,000 income for a year (or two?) but this $0.00-then-goes-to-hundred-thousand-or-whatever-sometime gets old faster than I thought.  Knowing how competitive this industry is, how intelligent and aggressive the competition is, especially knowing about the "good technology Vs. marketing  misinformation / disinformation gap" nemsis (observe Microsoft) I am inclined to cast my hat into another ring in the future if that is necessary, where outrageous deception is not as prevalent.  \
+\
+One way of looking at this is I went into business to "take control of my life" with respect to career and future.  What I have gotten, however, goes something like this: \
+\
+Juggernauts like circus clowns setting so-called standards (the EFI dip) about things they barely understand, users addicted to buzzwords and phrases (like, "Do you have "device profiles"?), bogus nonsensical patents like the "Gamut alarms"/Scrieber patent.  The "Well, they don't have Photoshop yet" stupid attitude,  the Adobe Postscript Third Reich (900 DPI etc. etc.)   The Germans have CIC.  The Japs have who-knows-what.  Alagazam-poof! and now there are no fewer than 6 NeXTSTEP image-processing apps coming.  Man, these people  
+\b are
+\b0  controlling my life.  I might as well have a boss.\
+\
+This should not be heard as a "defeatist" mindset, think of it rather as a judgement call.  I can be a warrior - a fighter, and I can be an artist, a creative being.  What I cannot do, I have found, is both, which, ironically, seems to be the order of the day.  "
+\i Well, we can't do this because of them, and we can't not do this because somebody else, and we gotta have that because so and so has a cheap imitation, and  we better not say this or try that because of so and so, and oh, but if we do this, and we could get this vendor to buy off on it
+\i0 ..." and on and on and on.   We have had discussion after discussion about these things, with very little conclusion as to what response to take or  what alternative path on which to run - i.e. what other option(s) do we have given whatever particular problem discussed.   This, to the creative being is tantamount to control, not having choices, that is.\
+\
+Bottom line, what I see coming is that I will be uncomfortable not being 95% done by April 30 and will begin to quickly lose my resolve after June 1.  Regarding the schedule, the biggest problem I see is the unknowns.  First we started out with many unknowns which I worked feverishly to make into knowns. We now have knowns that push us well into April.   But, we are adding back unknowns (like Color Rendering Dictionaries), that really put a damper on April 30 confidence levels.  What we should do is deal only with knowns, starting today,  (Dec 29, 1992) and do a discrete analysis of what we have to work with.  If we determine there is no marketable product that can be finished by April 30,  I am prepared to abandon ship and regroup,  get a Unix programming job or something in the meantime and talk to you about other possible business adventures that hopefully would not be so treacherous.  \
+\
+One must enjoy his work if he is to succeed in business at it.  But,  I have found the experience less than enjoyable, especially recently.   I think it is the Angst and  turmoil  from the above discussion antagonizing the creative being.  Creative being says "I thought we were getting in control here.  Getting rid of the tyrant and the dipstick.  But we traded a tyrant (Mize) for the Third Reich (Adobe).  We traded 1 dipstick (Bain) for a whole gob of dipsticks (users who require device profiles because they don't understand they don't need them).    Something more to ponder.\
+\
+\
+\
+\
+\
+  \
+\
+\
+
+}

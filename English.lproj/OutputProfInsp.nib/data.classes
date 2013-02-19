@@ -1,0 +1,231 @@
+OutputProfileInspector = {
+    ACTIONS = {
+	doPasteboardImage:;
+	doOutofRange:;
+	blankColor:;
+	setPreviewView:;
+	setDensitiesView:;
+	processingQualitySet:;
+	relaxedInkmodelSet:;
+	printRcHnPattern:;
+	doPreview:;
+	install:;
+	setSetupView:;
+	revertToSaved:;
+	deviceTypeSet:;
+	saveAs:;
+	setColorSepView:;
+	teachMeTypeSet:;
+	alternateMixesSet:;
+	showMeasurements:;
+	loadTeachMe:;
+	printInkmodelPattern:;
+	fullScreenViewSet:;
+	save:;
+	setColorMatchingView:;
+	colorModified:;
+	loadInkmodel:;
+    };
+    OUTLETS = {
+	olVisualColor13;
+	olViewPopupButton;
+	olVisualColor1;
+	olVisualColor14;
+	olBlankColor;
+	olTeachMeType;
+	olVisualColor18;
+	olFullScreenPreview;
+	olVisualColor2;
+	olVisualColor15;
+	olVisualColor30;
+	olOutputProfInspView;
+	olVisualColor20;
+	olOffscreenWindow;
+	olVisualColor19;
+	olGCRText2;
+	olVisualColor3;
+	olExtendedColors;
+	olVisualColor16;
+	olVisualColor31;
+	olVisualColor21;
+	olMeasurementsPanel;
+	olGCRText3;
+	olColorMatchingView;
+	olMeasurementsText2;
+	olVisualColor17;
+	olDeviceType;
+	olVisualColor32;
+	olStringTable;
+	olVisualColor22;
+	olSetupView;
+	olBlackpointText;
+	olGCRText0;
+	olColorSepView;
+	olVisualColor33;
+	controller;
+	olVisualColor23;
+	olBlackpointSpin;
+	olGCRText1;
+	olNotApplicableView;
+	olOutputProfInspPanel;
+	olInstallButton;
+	olVisualColor34;
+	olStatusLine;
+	olVisualColor24;
+	olProcessingQualityMsg;
+	olGCRCurve;
+	olVisualColor28;
+	olMeasurementsText1;
+	olProcessingQuality;
+	olProgressView;
+	olVisualColor35;
+	olVisualColor25;
+	olTACText;
+	olVisualColor4;
+	olVisualColor8;
+	olLoadTeachMe;
+	olVisualColor29;
+	olPreviewView;
+	olVisualColor5;
+	olVisualColor26;
+	olVisualColor9;
+	olUseRelaxedInkmodel;
+	olGCRText4;
+	olViewPopup;
+	olAlternateMixes;
+	olVisualColor10;
+	olVisualColor6;
+	olCancelButton;
+	olVisualColor27;
+	olOffscreenScrollView;
+	olDensitiesView;
+	olVisualColor11;
+	olVisualColor7;
+	colorLinks;
+	olPreviewImage1;
+	olInkmodelFilename;
+	olVisualColor12;
+	olTeachMeFilename;
+	olPreviewImage2;
+	olVisualColor0;
+	olTACSlidey;
+    };
+    SUPERCLASS = Responder;
+};
+FirstResponder = {
+    ACTIONS = {
+	ok:;
+	stopPressed:;
+    };
+    SUPERCLASS = Object;
+};
+Slidey = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olControl1;
+    };
+    SUPERCLASS = Control;
+};
+Curve = {
+    ACTIONS = {
+	setHandles:;
+    };
+    OUTLETS = {
+	olControl4;
+	olControl0;
+	olControl5;
+	idGridImage;
+	olControl3;
+	olControl2;
+	olControl1;
+    };
+    SUPERCLASS = Control;
+};
+Controller = {
+    ACTIONS = {
+	appWillTerminate:;
+	open:;
+	showInspector:;
+	doChange:;
+	setVisualCalibrateColor:;
+	testMeter:;
+	makeCircuit:;
+	setWindowBackgroundColor:;
+	doFirstInspector:;
+	doSecondInspector:;
+	showInfo:;
+	calibrateMonitor:;
+	doThirdInspector:;
+	preferences:;
+	showPrometer:;
+	saveAll:;
+	print:;
+    };
+    OUTLETS = {
+	olTestGreenGamma1;
+	olTestGreenGamma2;
+	olTestGammaPanel;
+	olTestRedGamma2;
+	olPreferencesPanel;
+	olTestRedGamma1;
+	olInspectorBox;
+	olSecondInspector;
+	olFirstInspector;
+	olVisualColor9;
+	olVisualColor8;
+	olOutputProfMgrPanel;
+	olDensitiesView;
+	olApplicationView;
+	olInputProfMgrPanel;
+	olThirdInspector;
+	olInfoPanel;
+	idPrometer;
+	olVisualColor7;
+	olVisualColor3;
+	olTestCurvePanel;
+	olVisualColor6;
+	olVisualColor2;
+	olAttributesView;
+	olVisualColor5;
+	olVisualColor1;
+	olVisualColor4;
+	olVisualColor0;
+	olVisualColor11;
+	olVisualColor10;
+	olMonitorCalibrationPanel;
+	olImageCoordinates;
+	olOutputProfInspView;
+	olTestBlueGamma1;
+	olTestBlueGamma2;
+	olColorSepView;
+	olTestCurve;
+	olScreenCoordinates;
+	olVisualColorMatchView;
+    };
+    SUPERCLASS = Object;
+};
+Spin = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olControl1;
+    };
+    SUPERCLASS = Control;
+};
+ProgressView = {
+    ACTIONS = {
+	increment:;
+    };
+    OUTLETS = {
+    };
+    SUPERCLASS = View;
+};
+MyDBImageView = {
+    ACTIONS = {
+    };
+    OUTLETS = {
+	olOtherImage;
+    };
+    SUPERCLASS = DBImageView;
+};
