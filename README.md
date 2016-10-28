@@ -16,8 +16,10 @@ NeXTSTEP OS.
 This code compiles on a NeXTStation Turbo or NeXT Cube running 
 NeXTSTEP 3.x.
 
-because it is a genuine sample of an original NeXTSTEP application, and
-a lot of the NeXT API lives on today in OSX / MacOS.
+I put this on github - in part as a tribute to the NeXT and Steve Jobs
+and because it is a genuine sample of an original NeXTSTEP application.
+
+A lot of the NeXT API lives on today in OSX / MacOS.
 
 What It Does
 ============
